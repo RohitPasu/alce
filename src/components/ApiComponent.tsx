@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Dropdown from './Dropdown';
 import ImportButton from './ImportButton';
+import ApiHeaders from './ApiHeaders';
 
 const ApiComponent = ({ setHeaders, setData }) => {
     const HTTPmethods = [
@@ -18,9 +19,7 @@ const ApiComponent = ({ setHeaders, setData }) => {
     const [source, setSource] = useState();
     const [url, setUrl] = useState();
     const [method, setMethod] = useState('GET');
-    const [apiHeaders, setApiHeaders] = useState([]);
-    const [key, setKey] = useState('');
-    const [value, setValue] = useState('');
+    const [apiHeaders, setApiHeaders] = useState([{ key: '', value: '' }]);
 
     const handleSourceChange =  (selectedValue) => {
         setSource(selectedValue);
@@ -36,28 +35,6 @@ const ApiComponent = ({ setHeaders, setData }) => {
             setData(importedData);
         }
     };
-
-    const handleAddHeader = () => {
-        if (key && value) {
-          setApiHeaders([...apiHeaders, { key, value }]);
-          setKey('');
-          setValue('');
-        }
-        console.log("apiHeaders", apiHeaders)
-    };
-
-    const handleKeyChange = (e) => {
-        setKey(e.target.value);
-    };
-    const handleValueChange = (e) => {
-        setValue(e.target.value);
-    };
-
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-          handleAddHeader();
-        }
-      };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -94,24 +71,7 @@ const ApiComponent = ({ setHeaders, setData }) => {
                     />
                 </div>
                 <h3 className="font-mono"> URL parameters </h3>
-                <div className="flex">
-                    <input 
-                        type="text" 
-                        value={key} 
-                        onChange={handleKeyChange}
-                        onKeyPress={handleKeyPress}
-                        placeholder="key"
-                        className="flex-grow p-2 border font-mono"
-                    />
-                    <input 
-                        type="text" 
-                        value={value} 
-                        onChange={handleValueChange}
-                        onKeyPress={handleKeyPress}
-                        placeholder="value"
-                        className="flex-grow p-2 border font-mono"
-                    />
-                </div>
+                <ApiHeaders apiHeaders={apiHeaders} setApiHeaders={setApiHeaders} />
                 <div className="flex space-x-8">
                     <button 
                         type="submit"

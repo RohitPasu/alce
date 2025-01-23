@@ -1,6 +1,6 @@
 const Sidebar = ({header, listItems}) => {
   return (
-    <div className="w-64 bg-white h-full fixed left-0 top-0 shadow-lg">
+    <div className="w-64 bg-white h-full fixed left-0 top-0 shadow-lg font-mono">
       <div className="p-4">
         <h2 className="text-2xl font-bold mb-4">{header}</h2>
         <nav>
