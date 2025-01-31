@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../Sidebar';
 import ApiComponent from '../components/ApiComponent';
+import FormAI from '../components/SearchAI/FormAI';
 import DatabaseTable from './DatabaseTable';
 
 const header = "InsertLogo"

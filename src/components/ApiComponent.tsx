@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Dropdown from './Dropdown';
 import ImportButton from './ImportButton';
 import ApiHeaders from './ApiHeaders';
+import Playground from './SearchAI/PlaygroundAI';
 
 const ApiComponent = ({ setHeaders, setData }) => {
     const HTTPmethods = [
@@ -89,6 +90,7 @@ const ApiComponent = ({ setHeaders, setData }) => {
                     >
                         Save Data
                     </button>
+                    <Playground />
                 </div>
             </form>
         </div>

@@ -26,8 +26,7 @@ const DatabaseTable = ({headers, data}) => {
             </table>
             )}
         </div>
-);
-
+    );
 };
 
 export default DatabaseTable;
